@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../bowe r_components/react/react.js"></script>
+    <script src="../bower_components/react/react.js"></script>
     <script src="../bower_components/react/react-dom.js"></script>
     <script src="../bower_components/babel-standalone/babel.min.js"></script>
+    <style>
+        .input {
+            border: 1px solid #eee;
+            outline: none;
+            height: 30px;
+            width: 230px;
+            padding: 0px 5px;
+        }
+    </style>
 </head>
 <body>
     <div id="container"></div>
@@ -14,10 +23,15 @@
     var HelloWorld = React.createClass({
         render: function() {
             return (
-                <p>
-                    Hello, <input type="text" placeholder="Your name here" />!
-                    It is {this.props.date.toTimeString()}
-                </p>
+                <div>
+                    Hello, <input type="text" className="input" placeholder="Your name here" />
+                    <div>
+                        <h3>
+                            <span>It is </span>
+                            {this.props.date.toTimeString()}
+                        </h3>
+                    </div>
+                </div>
             )
         }
     });
