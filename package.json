@@ -1,0 +1,23 @@
+{
+  "name": "react-redux-demo",
+  "version": "1.0.0",
+  "description": "learn react",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "luojinghui",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0"
+  }
+}
