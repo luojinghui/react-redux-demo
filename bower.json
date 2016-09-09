@@ -15,5 +15,8 @@
   "dependencies": {
     "react": "^15.3.0",
     "babel-standalone": "^6.10.3"
+  },
+  "devDependencies": {
+    "ldialog": "^1.0.6"
   }
 }

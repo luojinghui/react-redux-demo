@@ -1,7 +1,7 @@
 var webpack = require('webpack'),
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
   autoprefixer = require('autoprefixer'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  DashboardPlugin = require('webpack-dashboard/plugin'),
   path = require('path')
 
 module.exports = {
@@ -19,29 +19,30 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, './dist'),
-    filename: '[name].js'
+    filename: '[name].[chunkhash:10].js',
+    publicPath: 'http://localhost/'  //TODO modify to http://fecdn.59store.com/
   },
   module: {
     loaders: [
       {
         test: /\.less$/,
         exclude: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]__[hash:base64:6]!postcss-loader!less-loader'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&minimize&camelCase&importLoaders=1&localIdentName=[local]__[hash:base64:6]!postcss-loader!less-loader')
       },
       {
         test: /\.css$/,
         exclude: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]__[hash:base64:6]!postcss-loader'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&minimize&camelCase&importLoaders=1&localIdentName=[local]__[hash:base64:6]!postcss-loader')
       },
       {
         test: /\.less$/,
         include: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader!less-loader'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
       },
       {
         test: /\.css$/,
         include: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       },
       {
         test: /\.(js|jsx)$/,
@@ -69,18 +70,23 @@ module.exports = {
     })
   ],
   plugins: [
-    new DashboardPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('lib', 'lib.js'),
+    new webpack.optimize.CommonsChunkPlugin('lib', 'lib.[chunkhash:10].js'),
+    new ExtractTextPlugin("[name].[chunkhash:10].css"),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }
     }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false
+      }
+    }),
     new HtmlWebpackPlugin({
+      minify: {},
       template: './index.html'
     })
-  ],
-  devServer: {
-    stats: { chunks:false },
-    contentBase: './src',
-    hot: true
-  }
+  ]
 }
