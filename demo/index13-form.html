@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/react/react.js"></script>
+  <script src="../bower_components/react/react-dom.js"></script>
+  <script src="../bower_components/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="content"></div>
+</body>
+<script type="text/babel">
+    /**
+     *  类型为 radio、checkbox 的<input> 支持 defaultChecked 属性，
+     *  <select> 支持 defaultValue 属性。
+     */
+    var FormSubmit = React.createClass({
+      render: function() {
+        return (
+          <div>
+            <input type="radio" name="opt" defaultChecked /> Option 1
+            <input type="radio" name="opt" /> Option 2
+            <select defaultValue="C">
+              <option value="A">Apple</option>
+              <option value="B">Banana</option>
+              <option value="C">Cranberry</option>
+            </select>
+            <textarea name="desc" defaultValue={this.props.value}/>
+            <select defaultValue="B">
+              <option value="A">Apple</option>
+              <option value="B">Banana</option>
+              <option value="C">Cranberry</option>
+            </select>
+            <label>
+                <input type="checkbox" defaultChecked name="sex" value="男"/>男
+            </label>
+            <label>
+                <input type="checkbox" defaultChecked name="sex" value="女"/>女
+            </label>
+            <label>
+              <input type="checkbox" name="sex" value="人妖"/>人妖
+            </label>
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(
+        <FormSubmit value="this is init text content"/>,
+        document.getElementById('content')
+    );
+</script>
+</html>

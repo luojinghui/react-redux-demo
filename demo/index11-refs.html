@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/react/react.js"></script>
+  <script src="../bower_components/react/react-dom.js"></script>
+  <script src="../bower_components/babel-standalone/babel.min.js"></script>
+</head>
+<style>
+    input {
+      outline: none;
+      height: 30px;
+      width: 400px;
+      background-color: #fff;
+      border: 1px solid #eee;
+    }
+</style>
+<body>
+<div id="content"></div>
+</body>
+<script type="text/babel">
+    var InputValue = React.createClass({
+        getInitialState: function() {
+            return {
+              value: ''
+            }
+        },
+        inputValue: function() {
+            var thinking = this.refs.thinking.value;
+
+            this.setState({
+                value: thinking
+            })
+        },
+        render: function() {
+            return (
+                <div>
+                    <input type="text" placeholder="input your thinking..." onChange={ this.inputValue } ref="thinking"/>
+                    <span ref="yourValue"> {this.state.value} </span>
+                </div>
+            )
+        }
+    })
+
+    ReactDOM.render(
+        <InputValue/>, document.getElementById('content')
+    )
+</script>
+</html>
