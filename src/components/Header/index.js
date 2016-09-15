@@ -19,7 +19,7 @@ class Header extends Component {
       <header>
         <h1>
           {/*<img src={img59} height="50"/>*/}
-          TODOS
+          TODOS LIST
           {/*<img src={img592}/>*/}
         </h1>
         <Link to="/" style={style}>home</Link>

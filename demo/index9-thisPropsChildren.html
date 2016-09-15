@@ -17,17 +17,17 @@
     var NodeList = React.createClass({
         render: function() {
             return (
-                  <div>
-                      {this.props.children}
-                      <div>test two</div>
-                  </div>
-//                <nav>
-//                  {
-//                    React.Children.map(this.props.children, function (child) {
-//                      return <li>{child}</li>
-//                    })
-//                  }
-//                </nav>
+//                  <div>
+//                      {this.props.children}
+//                      <div>test two</div>
+//                  </div>
+                <nav>
+                  {
+                    React.Children.map(this.props.children, function (child, index) {
+                      return <li>{child} <h3>{index}</h3> </li>
+                    })
+                  }
+                </nav>
             )
         }
     });
@@ -48,7 +48,6 @@
       <NodeList>
           <h2>test line one</h2>
           <h2>test line two</h2>
-          <NodeListOne/>
       </NodeList>,
       document.getElementById('content')
     )
