@@ -8,7 +8,7 @@ var app = new (require('express'))();
 var port = 3000;
 
 app.get("/", function(req, res) {
-    res.send('hello world');
+    res.sendFile(__dirname + '/src/index.html')
 });
 
 app.listen(port, function(error) {
