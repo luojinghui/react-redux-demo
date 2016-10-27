@@ -24,6 +24,7 @@ class Header extends Component {
         </h1>
         <Link to="/" style={style}>home</Link>
         <Link to="/routetest" style={style}>routetest</Link>
+        <Link to="/formtest" style={style}>formtest</Link>
         <TodoTextInput
           newTodo
           onSave={::this.handleSave}
