@@ -9,13 +9,8 @@
   <p>
     Clicked: <span id="value">00</span> times
     <button id="increment">+</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;
     <button id="decrement">-</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <button id="null">null</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button id="incrementIfOdd">Increment if odd</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;
     <button id="incrementAsync">Increment async</button>
   </p>
 </div>
@@ -36,7 +31,7 @@
     const valueEle = document.getElementById('value')
 
     function render() {
-        valueEle.innerHTML = store.getState().toString();
+        valueEle.innerHTML = store.getState();
     }
 
     store.subscribe(render)
@@ -47,10 +42,6 @@
 
   document.getElementById('decrement').addEventListener('click', function() {
       store.dispatch({ type: 'decrement' });
-  })
-
-  document.getElementById('null').addEventListener('click', function() {
-      store.dispatch({ type: '' });
   })
 
   document.getElementById('incrementIfOdd').addEventListener('click', function() {
