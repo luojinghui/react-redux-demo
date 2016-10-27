@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/react/react.js"></script>
+  <script src="../bower_components/react/react-dom.js"></script>
+  <script src="../bower_components/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="content"></div>
+</body>
+<script type="text/babel">
+    var NodeList = React.createClass({
+        render: function() {
+            return (
+//                  <div>
+//                      {this.props.children}
+//                      <div>test two</div>
+//                  </div>
+                <nav>
+                  {
+                    React.Children.map(this.props.children, function (child, index) {
+                      return <li>{child} <h3>{index}</h3> </li>
+                    })
+                  }
+                </nav>
+            )
+        }
+    });
+
+    var NodeListOne = React.createClass({
+        render: function() {
+            return (
+                <nav>
+                    <li>title one</li>
+                    <li>title two</li>
+                    <li>title three</li>
+                </nav>
+            )
+        }
+    })
+
+    ReactDOM.render(
+      <NodeList>
+          <h2>test line one</h2>
+          <h2>test line two</h2>
+      </NodeList>,
+      document.getElementById('content')
+    )
+</script>
+</html>

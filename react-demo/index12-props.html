@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/react/react.js"></script>
+  <script src="../bower_components/react/react-dom.js"></script>
+  <script src="../bower_components/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="content"></div>
+</body>
+<script type="text/babel">
+
+  /**
+   * 属性props是由父组件传递给子组件的。
+   * props属性的用法: <HelloWorld name=? />
+   * 字符串: "abc", 求职表达式:{123}, {'xiao'}
+   * 数组: {[1,2,3,4]}, 变量: {variable}
+   */
+  var Avatar = React.createClass({
+    render: function() {
+      return (
+        <div>
+          <ProfilePic username={this.props.username} />
+          <hr/>
+          <ProfileLink username={this.props.username} />
+        </div>
+      );
+    }
+  });
+
+  var ProfilePic = React.createClass({
+    render: function() {
+      return (
+        <h2>
+          {this.props.username}
+        </h2>
+      );
+    }
+  });
+
+  var ProfileLink = React.createClass({
+    render: function() {
+      return (
+        <h2>
+          {this.props.username}
+        </h2>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <Avatar username="pwh" />,
+    document.getElementById('content')
+  );
+</script>
+</html>

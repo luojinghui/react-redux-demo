@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/react/react.js"></script>
+    <script src="../bower_components/react/react-dom.js"></script>
+    <script src="../bower_components/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<style>
+    .topic-intro-extended {
+        display: block;
+    }
+    .fold {
+        display: none;
+    }
+</style>
+<script type="text/babel">
+    var Component = React.createClass({
+        getInitialState:function(){
+            return {
+                topicExtended:false
+            }
+        },
+        toggleClickHandler:function(e, index){
+            console.log(e);
+            this.setState({
+                topicExtended:!this.state.topicExtended
+            });
+        },
+        render:function(){
+            var topicCls = "topic-intro";
+            var foldCls = "";
+            if(this.state.topicExtended){
+                topicCls+=" topic-intro-extended";
+                foldCls+="fold";
+            }
+            return (
+                    <div>
+                        {
+                            [{"item": "this is one", "id": 1},{"item": "this is two", "id": 2}].map((val, index) => {
+                                return (
+                                        <div key={index}>
+                                            <div className="topic-content">
+                                                <div className={topicCls}>{val.item}</div>
+                                                <div className={foldCls}>blablabla</div>
+                                            </div>
+                                            <button className="toggle-btn" onClick={(e,index) => this.toggleClickHandler(e,index)}>click</button>
+                                        </div>
+                                )
+                            })
+                        }
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Component />,document.getElementById('app')
+    );
+</script>
+</html>
