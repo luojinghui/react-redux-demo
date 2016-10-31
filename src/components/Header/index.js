@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import TodoTextInput from '../TodoTextInput'
 import { Link } from 'react-router'
 
 class Header extends Component {
@@ -15,14 +14,10 @@ class Header extends Component {
     }
     return (
       <header>
-        <h1>
-          {/*<img src={img59} height="50"/>*/}
-          TODOS LIST
-          {/*<img src={img592}/>*/}
-        </h1>
-        <Link to="/" style={style}>home</Link>
-        <Link to="/routetest" style={style}>routetest</Link>
-        <Link to="/formtest" style={style}>formtest</Link>
+        <h1>Router test</h1>
+        <Link to="/" style={style} activeClassName="active">home</Link>
+        <Link to="/routetest" style={style} activeClassName="active">routetest</Link>
+        <Link to="/formtest" style={style} activeClassName="active">formtest</Link>
       </header>
     )
   }
