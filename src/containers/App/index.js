@@ -5,6 +5,7 @@ import Header from '../../components/Header'
 import MainSection from '../../components/MainSection'
 import * as TodoActions from '../../actions/todos'
 import style from './style.less'
+require('./index.css');
 
 class App extends Component {
   render() {
