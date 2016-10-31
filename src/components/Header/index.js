@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import TodoTextInput from '../TodoTextInput'
 import { Link } from 'react-router'
-import img59 from '../../assets/59.png'
-import img592 from '../../assets/592.png'
 
 class Header extends Component {
   handleSave(text) {
@@ -25,10 +23,6 @@ class Header extends Component {
         <Link to="/" style={style}>home</Link>
         <Link to="/routetest" style={style}>routetest</Link>
         <Link to="/formtest" style={style}>formtest</Link>
-        <TodoTextInput
-          newTodo
-          onSave={::this.handleSave}
-          placeholder="What needs to be done?" />
       </header>
     )
   }
