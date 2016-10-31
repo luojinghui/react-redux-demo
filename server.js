@@ -14,6 +14,10 @@ app.get("/index", function(req, res) {
     res.sendFile(__dirname + '/dist/index.html')
 });
 
+app.get("/admin", function(req, res) {
+    res.sendFile(__dirname + '/dist/index.html')
+});
+
 app.listen(port, function(error) {
     if (error) {
         console.error(error)
