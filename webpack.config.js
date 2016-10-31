@@ -30,19 +30,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]__[hash:base64:6]!postcss-loader'
+        // exclude: path.resolve(__dirname, './node_modules'),
+        loader: 'style-loader!css-loader'
       },
-      {
-        test: /\.less$/,
-        include: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader!less-loader'
-      },
-      {
-        test: /\.css$/,
-        include: path.resolve(__dirname, './node_modules'),
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
+      // {
+      //   test: /\.less$/,
+      //   include: path.resolve(__dirname, './node_modules'),
+      //   loader: 'style-loader!css-loader!postcss-loader!less-loader'
+      // },
+      // {
+      //   test: /\.css$/,
+      //   include: path.resolve(__dirname, './node_modules'),
+      //   loader: 'style-loader!css-loader!postcss-loader'
+      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
