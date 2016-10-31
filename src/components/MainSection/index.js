@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import TodoItem from '../TodoItem'
+import TodoTextInput from '../TodoTextInput'
 import Footer from '../Footer'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/filters'
 import style from './style.less'
@@ -15,6 +16,12 @@ class MainSection extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = { filter: SHOW_ALL }
+  }
+
+  handleSave(text) {
+    if (text.length) {
+      this.props.addTodo(text)
+    }
   }
 
   handleClearCompleted() {
@@ -66,6 +73,10 @@ class MainSection extends Component {
 
     return (
       <section className={style.main}>
+        <TodoTextInput
+            newTodo
+            onSave={::this.handleSave}
+            placeholder="What needs to be done?" />
         {this.renderToggleAll(completedCount)}
         <ul className={style.normal}>
           {filteredTodos.map(todo =>
