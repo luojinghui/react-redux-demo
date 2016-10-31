@@ -5,14 +5,15 @@
  */
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import style from '../../containers/App/style.less'
+import Header from '../Header'
 
 class FormTest extends Component {
   render() {
     return (
-      <div>
-        <h1>router form test </h1>
-        <Link to="/" style={{marginRight:"30px"}}>home</Link>
-        <Link to="/routetest">routetest</Link>
+      <div className={style.normal}>
+            <Header></Header>
+            <h2>router form test </h2>
       </div>
     )
   }
