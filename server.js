@@ -3,12 +3,15 @@
  * Date: 16/9/1
  * Time: 下午12:46
  */
+var express = require('express');
 
 var app = new (require('express'))();
 var port = 3000;
 
-app.get("/", function(req, res) {
-    res.sendFile(__dirname + '/src/index.html')
+app.use(express.static('./dist/'));
+
+app.get("/index", function(req, res) {
+    res.sendFile(__dirname + '/dist/index.html')
 });
 
 app.listen(port, function(error) {
